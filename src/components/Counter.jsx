@@ -27,7 +27,9 @@ const Counter = () => {
         }}
       >
         <Button onClick={() => handleChange("increment")}>+</Button>
-        <Button onClick={handleChange}>Reset</Button>
+        <Button variant="danger" onClick={handleChange}>
+          Reset
+        </Button>
         <Button onClick={() => handleChange("minus")}>-</Button>
       </div>
     </div>
