@@ -9,7 +9,7 @@ const Counter = () => {
     if (e === "increment") {
       return setCounter((prevCount) => prevCount + 1);
     } else if (e === "minus") {
-      return setCounter((prevCount) => prevCount - 1);
+      return setCounter((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
     } else {
       setCounter(0);
     }
@@ -22,7 +22,6 @@ const Counter = () => {
         style={{
           display: "flex",
           gap: "10px",
-
           justifyContent: "center",
         }}
       >
