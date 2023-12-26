@@ -1,5 +1,8 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 import classes from "./Counter.module.css";
+
 const Counter = () => {
   const [counter, setCounter] = useState(0);
   const handleChange = (e) => {
@@ -14,23 +17,18 @@ const Counter = () => {
   return (
     <div className={classes.parent}>
       <h1>Counter App</h1>
-      <div>{counter}</div>
-      <div>
-        <button
-          onClick={() => handleChange("increment")}
-          className={classes.buttons}
-        >
-          +
-        </button>
-        <button onClick={handleChange} className={classes.buttons}>
-          Reset
-        </button>
-        <button
-          onClick={() => handleChange("minus")}
-          className={classes.buttons}
-        >
-          -
-        </button>
+      <h2>{counter}</h2>
+      <div
+        style={{
+          display: "flex",
+          gap: "10px",
+
+          justifyContent: "center",
+        }}
+      >
+        <Button onClick={() => handleChange("increment")}>+</Button>
+        <Button onClick={handleChange}>Reset</Button>
+        <Button onClick={() => handleChange("minus")}>-</Button>
       </div>
     </div>
   );
