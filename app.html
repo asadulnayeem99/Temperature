@@ -5,6 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      input {
+        height: 50px;
+        width: 50px;
+        border: 2px dashed blue;
+        color: black;
+        font-size: 25px;
+      }
+      .date {
+        padding: 20px;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        /* justify-content: space-between; */
+        /* gap: 5%; */
+      }
+
       h1,
       div {
         text-align: center;
@@ -23,8 +41,9 @@
     </style>
   </head>
   <body>
-    <div class="parent">
+    <div id="id" class="parent">
       <h1>Counter App</h1>
+      <h2 id="time"></h2>
       <div>Display Data</div>
       <div class="buttons">
         <button>+</button>
@@ -32,5 +51,36 @@
         <button>-</button>
       </div>
     </div>
+    <div class="date">
+      <div><input id="hours" name="" /></div>
+      <div><input id="minutes" type="text" name="" disabled /></div>
+      <div><input id="seconds" type="text" name="" disabled /></div>
+    </div>
+    <script>
+      function tick() {
+        const time = new Date().toLocaleTimeString("bn-BD");
+        const show = document.getElementById("time");
+        show.innerHTML = time;
+      }
+      const int = setInterval(tick, 1000);
+      console.log(int);
+      const seconds = new Date("en-US").getSeconds();
+      const minutes = new Date().getMinutes();
+      const hours = new Date().getHours("bn-BD");
+      console.log(hours);
+
+      document.getElementById("seconds").innerHTML = hours;
+      const ghonta = document.getElementById("minutes");
+
+      // function x() {
+      //   for (var i = 1; i <= 5; i++) {
+      //     setTimeout(function () {
+      //       console.log(i);
+      //     }, i * 1000);
+      //   }
+      //   console.log("I Love Js");
+      // }
+      // x();
+    </script>
   </body>
 </html>

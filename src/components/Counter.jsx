@@ -1,35 +1,34 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
+import { useContext } from "react";
 import { Button } from "react-bootstrap";
+import { TbRefresh } from "react-icons/tb";
+import { CounterContext } from "../App";
 import classes from "./Counter.module.css";
 
 const Counter = () => {
-  const [counter, setCounter] = useState(0);
-  const handleChange = (e) => {
-    if (e === "increment") {
-      return setCounter((prevCount) => prevCount + 1);
-    } else if (e === "minus") {
-      return setCounter((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
-    } else {
-      setCounter(0);
-    }
-  };
+  const [value, setValue] = useContext(CounterContext);
+
   return (
     <div className={classes.parent}>
       <h1>Counter App</h1>
-      <h2>{counter}</h2>
+      <h2>{value}</h2>
       <div
         style={{
           display: "flex",
           gap: "10px",
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <Button onClick={() => handleChange("increment")}>+</Button>
-        <Button variant="danger" onClick={handleChange}>
-          Reset
+        <Button onClick={() => setValue(value + 1)}>+</Button>
+        <Button
+          style={{ textAlign: "center" }}
+          variant="danger"
+          onClick={() => setValue(0)}
+        >
+          <TbRefresh />
         </Button>
-        <Button onClick={() => handleChange("minus")}>-</Button>
+        <Button onClick={() => setValue(Math.max(0, value - 1))}>-</Button>
       </div>
     </div>
   );
